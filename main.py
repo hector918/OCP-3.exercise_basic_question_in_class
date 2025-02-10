@@ -1,4 +1,5 @@
-from shape_calculator import circleCalulator, RectangleCalculator, squareCalculator
+from shape_calculator import Circle, Rectangle, Square, Triangle
+
 
 class ShapeCalculator:
     """A bad implementation that violates the Open/Closed Principle (OCP)."""
@@ -7,14 +8,15 @@ class ShapeCalculator:
         """Calculates the area based on the shape type."""
 
         shape_selector = {
-            "circle": circleCalulator(),
-            "rectangle": RectangleCalculator(),
-            "square": squareCalculator()
+            "circle": Circle,
+            "rectangle": Rectangle,
+            "square": Square
         }
 
         try:
             if shape in shape_selector:
-                return shape_selector[shape].process(dimensions)
+                calculator = shape_selector[shape](**dimensions)
+                return calculator.process()
             else:
                 return "Unsupported shape."
         except Exception as e:

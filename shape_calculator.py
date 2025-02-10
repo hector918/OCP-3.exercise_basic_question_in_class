@@ -1,31 +1,34 @@
-from abc import ABC, abstractmethod
+class Shape:
+  pass
 
-class ShapeCalculator(ABC):
-  @abstractmethod
-  def process(self, **kwargs):
-    pass
-
+class ShapeCalculator:
+  def calculate_area(self, shape):
+    if not isinstance(shape, Shape):
+      raise TypeError("Expected a Square instance.")
+    return shape.process()
 ######################################################################
-class circleCalulator(ShapeCalculator):
-  def process(self, params):
-    if "radius" not in params:
-      raise ValueError("Parameter 'radius' not provided for circle calculation.") 
-    radius = params["radius"]
-    return 3.14 * radius * radius
+class Circle(Shape):
+  def __init__(self, radius):
+    self.radius = radius
+  def process(self):
+    return 3.14 * self.radius ** 2
   
-class RectangleCalculator(ShapeCalculator):
-  def process(self, params):
-    if "width" not in params or "height" not in params:
-      raise ValueError("Parameter 'width' or 'height' not provided for rectangle calculation.")
-    
-    width = params["width"]
-    height = params["height"]
-    area = width * height
-    return area 
-  
-class squareCalculator(ShapeCalculator):
-  def process(self, params):
-    if "side" not in params:
-      raise ValueError("Parameter 'side' not provided for square calculation.")
-    side = params['side']
-    return side * side
+class Rectangle(Shape):
+  def __init__(self, width, height):
+    self.width = width
+    self.height = height
+  def process(self):
+    return self.width * self.height
+ 
+class Square(Shape):
+  def __init__(self, side):
+    self.side = side
+  def process(self):
+    return self.side ** 2
+
+class Triangle(Shape):  
+  def __init__(self, base, height):
+    self.base = base
+    self.height = height
+  def process(self):
+    return 0.5 * self.base * self.height

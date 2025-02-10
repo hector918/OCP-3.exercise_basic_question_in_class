@@ -1,4 +1,5 @@
 import unittest
+from shape_calculator import ShapeCalculator, Circle, Rectangle, Square, Triangle
 
 class TestShapeCalculator(unittest.TestCase):
     def setUp(self):
