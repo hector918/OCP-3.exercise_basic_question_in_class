@@ -4,7 +4,7 @@ class Shape:
 class ShapeCalculator:
   def calculate_area(self, shape):
     if not isinstance(shape, Shape):
-      raise TypeError("Expected a Square instance.")
+      raise TypeError("Expected a Shape instance.")
     return shape.process()
 ######################################################################
 class Circle(Shape):

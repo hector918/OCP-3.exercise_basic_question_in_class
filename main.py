@@ -22,8 +22,6 @@ class ShapeCalculator:
         except Exception as e:
             return e
         
-
-
 # Example usage
 calculator = ShapeCalculator()
 print(calculator.calculate_area("circle", {"radius": 5}))
